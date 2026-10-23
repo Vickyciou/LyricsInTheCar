@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "recordings": [
+    {
+      "storeID": "fixture-recording",
+      "title": "Fixture Song",
+      "artist": "Studio Placeholder",
+      "durationSeconds": 30,
+      "durationToleranceSeconds": 1,
+      "lyrics": {
+        "cues": [
+          { "startSeconds": 0, "endSeconds": 5, "text": "Window light", "spans": [] },
+          { "startSeconds": 5, "endSeconds": 10, "text": "Open road", "spans": [] },
+          { "startSeconds": 10, "endSeconds": 15, "text": "Quiet mile", "spans": [] }
+        ]
+      }
+    }
+  ]
+}

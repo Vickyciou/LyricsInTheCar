@@ -6,7 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B10000000000000000000001 /* LyricsActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* LyricsActivityAttributes.swift */; };
+		C10000000000000000000001 /* LyricsLiveActivityBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000011 /* LyricsLiveActivityBundle.swift */; };
+		C10000000000000000000002 /* LyricsLiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000012 /* LyricsLiveActivityWidget.swift */; };
+		C10000000000000000000003 /* LyricsActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* LyricsActivityAttributes.swift */; };
+		C10000000000000000000004 /* LyricsLiveActivityExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C10000000000000000000013 /* LyricsLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		C10000000000000000000050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAFDEC80308B2AA500B6E294 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C10000000000000000000040;
+			remoteInfo = LyricsLiveActivityExtension;
+		};
 		FAFDEC96308B2AA700B6E294 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FAFDEC80308B2AA500B6E294 /* Project object */;
@@ -23,7 +38,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C10000000000000000000030 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C10000000000000000000004 /* LyricsLiveActivityExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B10000000000000000000002 /* LyricsActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsActivityAttributes.swift; sourceTree = "<group>"; };
+		C10000000000000000000011 /* LyricsLiveActivityBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsLiveActivityBundle.swift; sourceTree = "<group>"; };
+		C10000000000000000000012 /* LyricsLiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsLiveActivityWidget.swift; sourceTree = "<group>"; };
+		C10000000000000000000013 /* LyricsLiveActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LyricsLiveActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C10000000000000000000014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAFDEC88308B2AA500B6E294 /* LyricsInTheCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyricsInTheCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFDEC95308B2AA700B6E294 /* LyricsInTheCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LyricsInTheCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFDEC9F308B2AA700B6E294 /* LyricsInTheCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LyricsInTheCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +82,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C10000000000000000000031 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAFDEC85308B2AA500B6E294 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -76,16 +117,37 @@
 			isa = PBXGroup;
 			children = (
 				FAFDEC8A308B2AA500B6E294 /* LyricsInTheCar */,
+				B10000000000000000000003 /* Shared */,
+				C10000000000000000000020 /* LyricsLiveActivityExtension */,
 				FAFDEC98308B2AA700B6E294 /* LyricsInTheCarTests */,
 				FAFDECA2308B2AA700B6E294 /* LyricsInTheCarUITests */,
 				FAFDEC89308B2AA500B6E294 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
+		C10000000000000000000020 /* LyricsLiveActivityExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C10000000000000000000011 /* LyricsLiveActivityBundle.swift */,
+				C10000000000000000000012 /* LyricsLiveActivityWidget.swift */,
+				C10000000000000000000014 /* Info.plist */,
+			);
+			path = LyricsLiveActivityExtension;
+			sourceTree = "<group>";
+		};
+		B10000000000000000000003 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000002 /* LyricsActivityAttributes.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		FAFDEC89308B2AA500B6E294 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				FAFDEC88308B2AA500B6E294 /* LyricsInTheCar.app */,
+				C10000000000000000000013 /* LyricsLiveActivityExtension.appex */,
 				FAFDEC95308B2AA700B6E294 /* LyricsInTheCarTests.xctest */,
 				FAFDEC9F308B2AA700B6E294 /* LyricsInTheCarUITests.xctest */,
 			);
@@ -95,6 +157,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C10000000000000000000040 /* LyricsLiveActivityExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C10000000000000000000062 /* Build configuration list for PBXNativeTarget "LyricsLiveActivityExtension" */;
+			buildPhases = (
+				C10000000000000000000033 /* Sources */,
+				C10000000000000000000031 /* Frameworks */,
+				C10000000000000000000032 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LyricsLiveActivityExtension;
+			packageProductDependencies = (
+			);
+			productName = LyricsLiveActivityExtension;
+			productReference = C10000000000000000000013 /* LyricsLiveActivityExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		FAFDEC87308B2AA500B6E294 /* LyricsInTheCar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAFDECA9308B2AA700B6E294 /* Build configuration list for PBXNativeTarget "LyricsInTheCar" */;
@@ -102,10 +183,12 @@
 				FAFDEC84308B2AA500B6E294 /* Sources */,
 				FAFDEC85308B2AA500B6E294 /* Frameworks */,
 				FAFDEC86308B2AA500B6E294 /* Resources */,
+				C10000000000000000000030 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C10000000000000000000051 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				FAFDEC8A308B2AA500B6E294 /* LyricsInTheCar */,
@@ -173,6 +256,9 @@
 				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 2650;
 				TargetAttributes = {
+					C10000000000000000000040 = {
+						CreatedOnToolsVersion = 26.5;
+					};
 					FAFDEC87308B2AA500B6E294 = {
 						CreatedOnToolsVersion = 26.5;
 					};
@@ -201,6 +287,7 @@
 			projectRoot = "";
 			targets = (
 				FAFDEC87308B2AA500B6E294 /* LyricsInTheCar */,
+				C10000000000000000000040 /* LyricsLiveActivityExtension */,
 				FAFDEC94308B2AA700B6E294 /* LyricsInTheCarTests */,
 				FAFDEC9E308B2AA700B6E294 /* LyricsInTheCarUITests */,
 			);
@@ -208,6 +295,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C10000000000000000000032 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAFDEC86308B2AA500B6E294 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,10 +326,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C10000000000000000000033 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10000000000000000000001 /* LyricsLiveActivityBundle.swift in Sources */,
+				C10000000000000000000002 /* LyricsLiveActivityWidget.swift in Sources */,
+				C10000000000000000000003 /* LyricsActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAFDEC84308B2AA500B6E294 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B10000000000000000000001 /* LyricsActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +361,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C10000000000000000000051 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C10000000000000000000040 /* LyricsLiveActivityExtension */;
+			targetProxy = C10000000000000000000050 /* PBXContainerItemProxy */;
+		};
 		FAFDEC97308B2AA700B6E294 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FAFDEC87308B2AA500B6E294 /* LyricsInTheCar */;
@@ -269,6 +379,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		C10000000000000000000060 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NNHJ7Y69AL;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LyricsLiveActivityExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vicky.LyricsInTheCar.LyricsLiveActivityExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C10000000000000000000061 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NNHJ7Y69AL;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LyricsLiveActivityExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vicky.LyricsInTheCar.LyricsLiveActivityExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		FAFDECA7308B2AA700B6E294 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -401,6 +563,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Lyrics in the Car reads the song playing in Apple Music to show synchronized fixture lyrics.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -433,6 +597,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Lyrics in the Car reads the song playing in Apple Music to show synchronized fixture lyrics.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -541,6 +707,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C10000000000000000000062 /* Build configuration list for PBXNativeTarget "LyricsLiveActivityExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C10000000000000000000060 /* Debug */,
+				C10000000000000000000061 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FAFDEC83308B2AA500B6E294 /* Build configuration list for PBXProject "LyricsInTheCar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
