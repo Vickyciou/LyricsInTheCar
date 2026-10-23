@@ -1,0 +1,23 @@
+# Xcode user settings
+xcuserdata/
+*.xcuserstate
+
+# Build products
+build/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# CocoaPods and Carthage build outputs
+Pods/
+Carthage/Build/
+
+# macOS metadata
+.DS_Store
+
