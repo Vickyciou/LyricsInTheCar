@@ -116,7 +116,7 @@ struct LyricsScreen: View {
         case .loading:
             HStack {
                 ProgressView()
-                Text("Resolving fixture lyrics")
+                Text("Resolving lyrics")
             }
         case .ready(let context):
             Text(context.active ?? "Instrumental")
@@ -266,8 +266,9 @@ struct LyricsScreen: View {
     private func lyricUnavailableTitle(_ reason: LyricUnavailable) -> String {
         switch reason {
         case .noFixture: "No fixture lyrics"
+        case .noSynchronizedLyrics: "No synchronized lyrics"
         case .unidentifiedRecording: "Recording could not be identified"
-        case .recordingMismatch: "Recording does not match the fixture"
+        case .recordingMismatch: "Returned recording did not match"
         case .ambiguousMatch: "Recording match is ambiguous"
         case .sourceFailed: "Lyric source failed"
         case .invalidTiming: "Lyric timing is invalid"

@@ -563,7 +563,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Lyrics in the Car reads the song playing in Apple Music to show synchronized fixture lyrics.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Lyrics in the Car reads the song playing in Apple Music to show synchronized lyrics.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -597,7 +597,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Lyrics in the Car reads the song playing in Apple Music to show synchronized fixture lyrics.";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Lyrics in the Car reads the song playing in Apple Music to show synchronized lyrics.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

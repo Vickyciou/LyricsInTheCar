@@ -244,6 +244,7 @@ nonisolated enum LyricValidationFailure: Error, Hashable, Sendable {
 
 nonisolated enum LyricUnavailable: Hashable, Sendable {
     case noFixture
+    case noSynchronizedLyrics
     case unidentifiedRecording
     case recordingMismatch
     case ambiguousMatch
@@ -350,7 +351,7 @@ protocol PlaybackFollowing: AnyObject {
     func sample() -> PlaybackObservation
 }
 
-protocol TimedLyricsLoading: Sendable {
+nonisolated protocol TimedLyricsLoading: Sendable {
     func lyrics(for track: TrackDescriptor) async -> LyricLookupResult
 }
 

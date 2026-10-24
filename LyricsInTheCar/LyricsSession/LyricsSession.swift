@@ -78,7 +78,7 @@ final class LyricsSession {
     static func live() -> LyricsSession {
         LyricsSession(dependencies: LyricsSessionDependencies(
             playback: SystemMusicPlayback(),
-            lyrics: FixtureLyricsSource(),
+            lyrics: LRCLIBLyricsSource.live(),
             clock: ContinuousSessionClock(),
             activity: ActivityKitLyricsPublisher()
         ))
@@ -314,6 +314,7 @@ final class LyricsSession {
     ) {
         lyricTask = Task { [weak self, lyrics = dependencies.lyrics] in
             let result = await lyrics.lyrics(for: descriptor)
+            guard !Task.isCancelled else { return }
             await self?.receiveLyrics(result, runID: runID, generation: generation)
         }
     }
