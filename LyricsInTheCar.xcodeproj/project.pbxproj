@@ -12,6 +12,8 @@
 		C10000000000000000000002 /* LyricsLiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000012 /* LyricsLiveActivityWidget.swift */; };
 		C10000000000000000000003 /* LyricsActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* LyricsActivityAttributes.swift */; };
 		C10000000000000000000004 /* LyricsLiveActivityExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C10000000000000000000013 /* LyricsLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D10000000000000000000001 /* LyricsLiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000012 /* LyricsLiveActivityWidget.swift */; };
+		D10000000000000000000002 /* LyricsActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000002 /* LyricsActivityAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -348,6 +350,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D10000000000000000000001 /* LyricsLiveActivityWidget.swift in Sources */,
+				D10000000000000000000002 /* LyricsActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

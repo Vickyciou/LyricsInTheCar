@@ -560,7 +560,7 @@ final class LyricsSession {
                 if presentation.playback == .positionUnavailable {
                     display = .unavailable(.position)
                 } else if let active = context.active {
-                    display = .lyric(text: active, isPaused: paused)
+                    display = .lyric(text: active, next: context.next, isPaused: paused)
                 } else {
                     display = .noActiveLine(isPaused: paused)
                 }

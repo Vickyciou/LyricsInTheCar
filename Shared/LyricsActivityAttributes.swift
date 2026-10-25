@@ -8,7 +8,7 @@ nonisolated struct LyricsActivityAttributes: ActivityAttributes {
         }
 
         enum Display: Codable, Hashable, Sendable {
-            case lyric(text: String, isPaused: Bool)
+            case lyric(text: String, next: String?, isPaused: Bool)
             case noActiveLine(isPaused: Bool)
             case noPlayback
             case unavailable(UnavailableReason)

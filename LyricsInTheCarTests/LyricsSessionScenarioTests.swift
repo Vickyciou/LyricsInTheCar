@@ -358,6 +358,119 @@ final class LyricsSessionScenarioTests: XCTestCase {
         )))
     }
 
+    func testLiveActivityPublishesActiveAndNextLyricsAcrossTimeline() async throws {
+        let rig = try SessionTestRig(
+            observation: .current(
+                track: .fixture,
+                timing: .advancing(from: PlaybackPosition(seconds: 2))
+            ),
+            lyrics: .document(.threeLines)
+        )
+        await rig.session.send(.startFollowing)
+        await rig.settle()
+        await rig.session.send(.startLiveActivity)
+
+        rig.playback.observation = .current(
+            track: .fixture,
+            timing: .advancing(from: try PlaybackPosition(seconds: 6))
+        )
+        await rig.session.send(.reconcilePlayback)
+        rig.playback.observation = .current(
+            track: .fixture,
+            timing: .advancing(from: try PlaybackPosition(seconds: 11))
+        )
+        await rig.session.send(.reconcilePlayback)
+
+        let submissions = await rig.activity.recordedSubmissions()
+        XCTAssertEqual(submissions, [
+            .visible(.init(
+                track: .init(title: "Fixture Song", artist: "Studio Placeholder"),
+                display: .lyric(text: "Window light", next: "Open road", isPaused: false),
+                revision: 1
+            )),
+            .visible(.init(
+                track: .init(title: "Fixture Song", artist: "Studio Placeholder"),
+                display: .lyric(text: "Open road", next: "Quiet mile", isPaused: false),
+                revision: 2
+            )),
+            .visible(.init(
+                track: .init(title: "Fixture Song", artist: "Studio Placeholder"),
+                display: .lyric(text: "Quiet mile", next: nil, isPaused: false),
+                revision: 3
+            )),
+        ])
+    }
+
+    func testLiveActivityPausePreservesBothLyricLines() async throws {
+        let rig = try SessionTestRig(
+            observation: .current(
+                track: .fixture,
+                timing: .advancing(from: PlaybackPosition(seconds: 2))
+            ),
+            lyrics: .document(.threeLines)
+        )
+        await rig.session.send(.startFollowing)
+        await rig.settle()
+        await rig.session.send(.startLiveActivity)
+
+        rig.playback.observation = .current(
+            track: .fixture,
+            timing: .frozen(at: try PlaybackPosition(seconds: 2), reason: .paused)
+        )
+        await rig.session.send(.reconcilePlayback)
+
+        let submissions = await rig.activity.recordedSubmissions()
+        XCTAssertEqual(submissions, [
+            .visible(.init(
+                track: .init(title: "Fixture Song", artist: "Studio Placeholder"),
+                display: .lyric(text: "Window light", next: "Open road", isPaused: false),
+                revision: 1
+            )),
+            .visible(.init(
+                track: .init(title: "Fixture Song", artist: "Studio Placeholder"),
+                display: .lyric(text: "Window light", next: "Open road", isPaused: true),
+                revision: 2
+            )),
+        ])
+    }
+
+    func testLiveActivityGapDoesNotLeakUpcomingLyric() async throws {
+        let lyrics = RawTimedLyrics(cues: [
+            RawLyricCue(startSeconds: 0, endSeconds: 2, text: "First"),
+            RawLyricCue(startSeconds: 3, endSeconds: 4, text: "After gap"),
+        ])
+        let rig = try SessionTestRig(
+            observation: .current(
+                track: .fixture,
+                timing: .advancing(from: PlaybackPosition(seconds: 1))
+            ),
+            lyrics: .document(lyrics)
+        )
+        await rig.session.send(.startFollowing)
+        await rig.settle()
+        await rig.session.send(.startLiveActivity)
+
+        rig.playback.observation = .current(
+            track: .fixture,
+            timing: .advancing(from: try PlaybackPosition(seconds: 2.5))
+        )
+        await rig.session.send(.reconcilePlayback)
+
+        let submissions = await rig.activity.recordedSubmissions()
+        XCTAssertEqual(submissions, [
+            .visible(.init(
+                track: .init(title: "Fixture Song", artist: "Studio Placeholder"),
+                display: .lyric(text: "First", next: "After gap", isPaused: false),
+                revision: 1
+            )),
+            .visible(.init(
+                track: .init(title: "Fixture Song", artist: "Studio Placeholder"),
+                display: .noActiveLine(isPaused: false),
+                revision: 2
+            )),
+        ])
+    }
+
     private func waitUntil(_ condition: @escaping () async -> Bool) async {
         for _ in 0..<100 {
             if await condition() { return }

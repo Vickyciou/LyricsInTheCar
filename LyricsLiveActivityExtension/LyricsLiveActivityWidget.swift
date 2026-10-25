@@ -18,7 +18,7 @@ struct LyricsLiveActivityWidget: Widget {
                     playbackIndicator(for: context.state)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    ActivityLyricText(state: context.state)
+                    ActivityLyricText(display: context.state.display, budget: .compact)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             } compactLeading: {
@@ -36,7 +36,7 @@ struct LyricsLiveActivityWidget: Widget {
     @ViewBuilder
     private func playbackIndicator(for state: LyricsActivityAttributes.ContentState) -> some View {
         switch state.display {
-        case .lyric(_, let isPaused), .noActiveLine(let isPaused):
+        case .lyric(_, _, let isPaused), .noActiveLine(let isPaused):
             Image(systemName: isPaused ? "pause.fill" : "waveform")
         case .noPlayback:
             Image(systemName: "stop.fill")
@@ -73,7 +73,7 @@ struct LockScreenLyricsView: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
             }
-            ActivityLyricText(state: state)
+            ActivityLyricText(display: state.display, budget: .regular)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
@@ -90,9 +90,7 @@ struct SmallCarPlayLyricsView: View {
                     .font(.caption.bold())
                     .lineLimit(1)
             }
-            ActivityLyricText(state: state)
-                .font(.headline)
-                .lineLimit(2)
+            ActivityLyricText(display: state.display, budget: .compact)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(12)
@@ -100,14 +98,62 @@ struct SmallCarPlayLyricsView: View {
 }
 
 struct ActivityLyricText: View {
-    let state: LyricsActivityAttributes.ContentState
+    enum LayoutBudget {
+        case regular
+        case compact
+
+        var activeFont: Font {
+            switch self {
+            case .regular:
+                .system(size: 26, weight: .semibold, design: .rounded)
+            case .compact:
+                .system(.headline, design: .rounded, weight: .semibold)
+            }
+        }
+
+        var activeLineLimit: Int? {
+            switch self {
+            case .regular: 2
+            case .compact: 1
+            }
+        }
+
+        var nextFont: Font {
+            switch self {
+            case .regular: .subheadline
+            case .compact: .caption
+            }
+        }
+
+        var lineSpacing: CGFloat {
+            switch self {
+            case .regular: 4
+            case .compact: 2
+            }
+        }
+    }
+
+    let display: LyricsActivityAttributes.ContentState.Display
+    let budget: LayoutBudget
 
     var body: some View {
-        switch state.display {
-        case .lyric(let text, let isPaused):
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                if isPaused { Image(systemName: "pause.fill") }
-                Text(text)
+        switch display {
+        case .lyric(let text, let next, let isPaused):
+            VStack(alignment: .leading, spacing: budget.lineSpacing) {
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    if isPaused { Image(systemName: "pause.fill") }
+                    Text(text)
+                }
+                .font(budget.activeFont)
+                .lineLimit(budget.activeLineLimit)
+                .fixedSize(horizontal: false, vertical: true)
+
+                if let next {
+                    Text(next)
+                        .font(budget.nextFont)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
             }
         case .noActiveLine:
             Text("Instrumental")
